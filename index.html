@@ -27,7 +27,7 @@
       font-weight: bold;
     }
 
-    button {
+    .glow-button {
       padding: 15px 30px;
       font-size: 22px;
       background-color: #00ff00;
@@ -40,55 +40,11 @@
       margin: 10px;
     }
 
-    button:hover {
-      box-shadow: 0 0 30px 10px #00ff00;
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MCFA Number Picker</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
-
-    #cooldown {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    button {
-      padding: 15px 30px;
-      font-size: 22px;
-      background-color: #00ff00;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #00ff00;
-      cursor: pointer;
-      transition: 0.3s;
-      margin: 10px;
-    }
-
-    button:hover {
+    .glow-button:hover {
       box-shadow: 0 0 30px 10px #00ff00;
     }
 
-    button:disabled {
+    .glow-button:disabled {
       background-color: #555;
       color: #aaa;
       box-shadow: none;
@@ -105,8 +61,8 @@
 <body>
 
   <div id="cooldown">Loading...</div>
-  <button id="pickBtn">Pick Number</button>
-  <button id="copyBtn">Click to Copy</button>
+  <button id="pickBtn" class="glow-button">Pick Number</button>
+  <button id="copyBtn" class="glow-button">Click to Copy</button>
   <div id="result"></div>
 
   <audio id="sound" preload="auto">
@@ -164,54 +120,3 @@
   </script>
 </body>
 </html>
-￼Enter    }
-
-    button:disabled {
-      background-color: #555;
-      color: #aaa;
-      box-shadow: none;
-      cursor: not-allowed;
-    }
-
-    #result {
-      margin-top: 20px;
-      font-size: 36px;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-
-  <div id="cooldown">Loading...</div>
-  <button id="pickBtn">Pick Number</button>
-  <button id="copyBtn">Click to Copy</button>
-  <div id="result"></div>
-
-  <audio id="sound" preload="auto">
-    <source src="https://freesound.org/data/previews/341/341695_6261194-lq.mp3" type="audio/mpeg">
-  </audio>
-ript>
-    const cooldown = 60000;
-    const min = 1;
-    const max = 100;
-    const pickBtn = document.getElementById("pickBtn");
-    const copyBtn = document.getElementById("copyBtn");
-    const result = document.getElementById("result");
-    const cooldownText = document.getElementById("cooldown");
-    const sound = document.getElementById("sound");
-
-    pickBtn.onclick = function () {
-      const number = Math.floor(Math.random() * (max - min + 1)) + min;
-      const finalNumber = "MCFA" + number;
-      result.textContent = finalNumber;
-
-      try {
-        sound.currentTime = 0;
-        sound.play();
-      } catch (e) {}
-
-      localStorage.setItem("lastTime", Date.now());
-      updateTimer();
-    };
-
-    copyBtn.onclick = function () {
